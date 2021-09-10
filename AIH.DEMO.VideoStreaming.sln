@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIH.DEMO.VideoStreaming", "AIH.DEMO.VideoStreaming\AIH.DEMO.VideoStreaming.csproj", "{02EA9DFA-AA3A-40E3-8183-201E1C539802}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02EA9DFA-AA3A-40E3-8183-201E1C539802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EA9DFA-AA3A-40E3-8183-201E1C539802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EA9DFA-AA3A-40E3-8183-201E1C539802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EA9DFA-AA3A-40E3-8183-201E1C539802}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {516992A1-92EB-49CB-8590-0AED5452F9F6}
+	EndGlobalSection
+EndGlobal

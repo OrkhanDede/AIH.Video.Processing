@@ -1,0 +1,39 @@
+﻿ffmpeg -y -i 2_3mg.mp4 -preset slow -g 48 -sc_threshold 0 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -map 0:0 -map 0:1 -s:v:0 1920*1080 -b:v:0 1800k -s:v:1 1280*720 -b:v:1 1200k -s:v:2 858*480 -b:v:2 750k -s:v:3 630*360 -b:v:3 550k -s:v:4 426*240 -b:v:4 400k -s:v:5 256*144 -b:v:5 200k -c:a copy -var_stream_map "v:0,a:0,name:1080p v:1,a:1,name:720p v:2,a:2,name:480p v:3,a:3,name:360p v:4,a:4,name:240p v:5,a:5,name:144p" -master_pl_name master.m3u8 -f hls -hls_time 10 -hls_key_info_file enc.keyinfo -hls_playlist_type vod -hls_list_size 0 -hls_segment_filename "v%v/segment%d.ts" v%v/index.m3u8
+
+
+
+ffmpeg -y -i 2_3mg.mp4 -codec copy -bsf h256_mp4toannexb -map 0 -f segment -segment_time 10 -segment_format mpgets -segment_list "/processed/demo_idex.m3u8" -segment_list_type m3u8 "/processed/fileSequence%d.ts"
+
+
+
+
+
+ffmpeg -i 2_3mg.mp4 -vf scale=w=1280:h=720:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 20 -g 48 -keyint_min 48 -sc_threshold 0 -b:v 2500k -maxrate 2675k -bufsize 3750k -hls_time 4 -hls_playlist_type vod -hls_segment_filename processed/720p_%03d.ts processed/720p.m3u8
+
+
+
+ffmpeg  -i 2_3mg.mp4  -c:a aac  -ar 48000  -b:a 128k  -c:v h264  -profile:v main  -crf 20  -g 48  -keyint_min 48  -sc_threshold 0  -b:v 2500k  -maxrate 2675k  -bufsize 3750k  -hls_time 10  -hls_playlist_type vod  -hls_segment_filename processed/30s_new/30s_new_%03d.ts processed/30s_new/30s_new.m3u8
+
+ffmpeg -i input.mp4 -map 0 -c copy -f segment -segment_time 1800 -reset_timestamps 1 output_%03d.mp4
+
+
+ffmpeg  -i 2_3mg.mp4
+  -c:a aac
+  -ar 48000
+  -b:a 128k
+  -c:v h264
+  -profile:v main
+  -crf 20
+  -g 48
+  -keyint_min 48
+  -sc_threshold 0
+  -b:v 2500k
+  -maxrate 2675k
+  -bufsize 3750k
+  -hls_time 10
+  -hls_playlist_type vod
+  -hls_segment_filename processed/30s_new/30s_new_%03d.ts processed/30s_new/30s_new.m3u8
+  
+  
+ffmpeg -i 2_3mg.mp4 -map 0 -c copy -hls_time 10 -hls_playlist_type vod -hls_segment_filename processed/31s_new/31s_new_%03d.ts processed/31s_new/31s_new.m3u8
+  
